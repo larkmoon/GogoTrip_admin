@@ -13,4 +13,10 @@ public class CustController {
 		m.addAttribute("center","cust/add");
 		return "index";
 	}
+	
+	@RequestMapping("/select")
+	public String select(Model m) {
+		m.addAttribute("center","cust/select");
+		return "index";
+	}
 }
