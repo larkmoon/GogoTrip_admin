@@ -52,9 +52,12 @@
                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>ADMIN PAGE</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="ms-3">
-                        <h6 class="mb-0">Name</h6>
-                        <span>level</span>
+                    <div class="ms-3" th:if="${session.loginadmin == null}">
+                        
+                    </div>
+                    <div class="ms-3" th:unless="${session.loginadmin == null}">
+                        <h6 class="mb-0" th:text="${session.loginadmin.id}"></h6>
+                        <span th:text="${session.loginadmin.level}"></span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -121,18 +124,17 @@
                     
                     <!-- Profile -->
                     <div class="nav-item dropdown">
-                    	<a th:if="${session.logincust == null}" href="/login" class="nav-item nav-link">
+                    	<a th:if="${session.loginadmin == null}" href="/login" class="nav-item nav-link">
                     	<i class="fa fa-th me-2"></i>
                     	<span class="d-none d-lg-inline-flex">Login</span>
                     	</a>
-                        <a th:unless="${session.logincust == null}" href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Admin Name</span>
+                        <a th:unless="${session.loginadmin == null}" href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-th me-2"></i>
+                            <span class="d-none d-lg-inline-flex" th:text="${session.loginadmin.name}"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="/mypage" class="dropdown-item">My Profile</a>
+                            <a href="/logout" class="dropdown-item">Logout</a>
                         </div>
                     </div>
                 </div>
