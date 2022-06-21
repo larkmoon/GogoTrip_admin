@@ -1,8 +1,25 @@
 <meta charset="utf-8">
 
+<script>
+
+$(document).ready(function(){
+	$('#register_btn').click(function(){
+		$('#register_form').attr({
+			'method':'post',
+			'action':'/admin/registerimpl'
+		});
+		$('#register_form').submit();
+	});
+	
+});
+
+</script>
+
+
+
 <div class="container-fluid pt-4 px-4" id="register_div">
     <div class="row g-4">
-        <div class="col-sm-12 col-xl-8">
+        <div class="col-sm-12 col-xl-6">
             <div class="bg-light rounded h-100 p-4">
                 <h6 class="mb-4">Add new Customer</h6>
                 <form id="register_form">
@@ -18,10 +35,6 @@
                         <label for="name" class="form-label">NAME</label>
                         <input type="text" class="form-control" id="name" name="name">
                     </div>
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Tel.</label>
-                        <input type="text" class="form-control" id="phone" name="phone">
-                    </div>
                     <label for="cid" class="form-label">LEVLE</label>
 					<select class="form-select mb-3" id="level" name="level">
                         <option selected>select level</option>
@@ -29,7 +42,7 @@
                         <option value="general">General</option>
                     </select>
                 </form>
-                <button href="#" class="btn btn-primary" id="register_btn">Register</button>
+                <button id="register_btn" class="btn btn-primary">Register</button>
             </div>
         </div>
 
