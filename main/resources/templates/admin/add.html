@@ -1,16 +1,62 @@
 <meta charset="utf-8">
 
 <script>
+var errorid = 1;
 
-$(document).ready(function(){
-	$('#register_btn').click(function(){
+function checkid(id){
+	$.ajax({
+		url:'/checkid',
+		data:{'id':id},
+		success:function(data){
+			if(data == "0"){
+				if(id == ""){
+					data = "1"
+				}
+				$('#ispan').text('');
+			}else if(data == "1"){
+				$('#ispan').text('This ID is already exist');
+			}
+			errorid = data;
+		}
+	});
+}
+function register(pwd,name){
+	
+	if(errorid == "1"){
+		alert("ID Error");
+		$('#id').focus();
+	}else if(pwd == ""){
+		alert("Input Password");
+		$('#pwd').focus();
+		
+	}else if(name == ""){
+		alert("Input name");
+		$('#name').focus();
+		
+	}else{
 		$('#register_form').attr({
 			'method':'post',
 			'action':'/admin/registerimpl'
 		});
 		$('#register_form').submit();
+	}
+}
+
+
+
+$(document).ready(function(){
+	$('#register_btn').click(function(){
+		var pwd = $('#pwd').val();
+		var name = $('#name').val();
+
+		register(pwd,name);
+		
 	});
 	
+	$('#id').blur(function(){
+		var id = $(this).val();
+		checkid(id);
+	});
 });
 
 </script>
@@ -21,11 +67,13 @@ $(document).ready(function(){
     <div class="row g-4">
         <div class="col-sm-12 col-xl-6">
             <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">Add new Customer</h6>
+                <h6 class="mb-4">Add new Admin</h6>
                 <form id="register_form">
                     <div class="mb-3">
                         <label for="id" class="form-label">ID</label>
                         <input type="text" class="form-control" id="id" name="id">
+                        <span id="ispan"></span> 
+                        
                     </div>
                     <div class="mb-3">
                         <label for="pwd" class="form-label">PASSWORD</label>
@@ -37,9 +85,9 @@ $(document).ready(function(){
                     </div>
                     <label for="cid" class="form-label">LEVLE</label>
 					<select class="form-select mb-3" id="level" name="level">
-                        <option selected>select level</option>
-                        <option value="super">Super</option>
                         <option value="general">General</option>
+                        <option value="super">Super</option>
+                        
                     </select>
                 </form>
                 <button id="register_btn" class="btn btn-primary">Register</button>
