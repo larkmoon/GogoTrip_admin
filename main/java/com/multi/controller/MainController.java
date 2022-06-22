@@ -17,7 +17,10 @@ public class MainController {
 	AdminBiz adbiz;
 
 	@RequestMapping("/")
-	public String main() {
+	public String main(HttpSession session) {
+		if (session.getAttribute("loginadmin") == null) {
+			return "login";
+		}
 		return "index";
 	}
 	
@@ -47,15 +50,15 @@ public class MainController {
 			return "redirect:login?msg=f";
 		}
 		
-		return "index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/logout")
-	public String logout(String m, HttpSession session) {
+	public String logout(HttpSession session) {
 		if (session != null) {
 			session.invalidate();
 		}
-		return "index";
+		return "redirect:/";
 	}
 	
 	
