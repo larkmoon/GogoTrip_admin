@@ -10,23 +10,18 @@
                                             <th scope="col">id</th>
                                             <th scope="col">name</th>
                                             <th scope="col">level</th>
+                                            <th scope="col">delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <tr th:each="admin:${adminlist}">
+                                            <td th:text="${admin.id}">id</th>
+                                            <td th:text="${admin.name}">name</td>
+                                            <td th:text="${admin.level}">level</td>
+                                            <th scope="col"><a th:href="@{delete(id=${admin.id})}">❎</a></th>
+                                            
                                         <tr>
-                                            <td>1</th>
-                                            <td>John</td>
-                                            <td>super</td>
-                                        <tr>
-                                            <td>2</th>
-                                            <td>Mark</td>
-                                            <td>general</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</th>
-                                            <td>Jacob</td>
-                                            <td>general</td>
-                                        </tr>
+  
                                     </tbody>
                                 </table>
                             </div>

@@ -1,5 +1,7 @@
 package com.multi.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,13 @@ public class AdminController {
 	
 	@RequestMapping("select")
 	public String select(Model m) {
+		List<AdminVO> list = null;
+		try {
+			list = adbiz.get();
+			m.addAttribute("adminlist",list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		m.addAttribute("center", "admin/select");
 		return "index";
 	}
@@ -35,7 +44,17 @@ public class AdminController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		m.addAttribute("center", "admin/select");
-		return "index";
+		return "redirect:select";
+	}
+	
+	@RequestMapping("delete")
+	public String delete(Model m, String id) {
+		try {
+			adbiz.remove(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:select";
 	}
 }
