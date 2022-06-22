@@ -1,23 +1,23 @@
-package com.multi.buy;
+package com.multi.cate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.BuyBiz;
-import com.multi.vo.BuyVO;
+import com.multi.biz.CateBiz;
+import com.multi.vo.CateVO;
 
 @SpringBootTest
-class BuySelectTest {
+class CateSelectTest {
 
 	@Autowired
-	BuyBiz biz;
+	CateBiz biz;
 	
 	@Test
 	void contextLoads() {
-		BuyVO obj = null;
+		CateVO obj = null;
 		try {
-			obj = biz.get(1);
+			obj = biz.get(10);
 			System.out.println(obj);
 		} catch (Exception e) {
 			e.printStackTrace();

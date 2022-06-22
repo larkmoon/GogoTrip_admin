@@ -1,28 +1,27 @@
-package com.multi.buy;
+package com.multi.product;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.BuyBiz;
-import com.multi.vo.BuyVO;
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
 
 @SpringBootTest
-class BuySelectTest {
+class ProductUpdateTest {
 
 	@Autowired
-	BuyBiz biz;
+	ProductBiz biz;
 	
 	@Test
 	void contextLoads() {
-		BuyVO obj = null;
+		ProductVO obj = new ProductVO(5,"product5",12000,11,null,0,"img5.jpg","update:stock=0");
 		try {
-			obj = biz.get(1);
-			System.out.println(obj);
+			biz.modify(obj);
+			System.out.println("complete ...");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 
 	}
 

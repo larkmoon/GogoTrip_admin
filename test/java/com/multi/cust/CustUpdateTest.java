@@ -1,28 +1,26 @@
-package com.multi.buy;
+package com.multi.cust;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.BuyBiz;
-import com.multi.vo.BuyVO;
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
 
 @SpringBootTest
-class BuyUpdateTest {
+class CustUpdateTest {
 
 	@Autowired
-	BuyBiz biz;
+	CustBiz biz;
 	
 	@Test
-	void contextLoads() {
-		BuyVO obj = new BuyVO(4,"id01","hwang", 20000,"Seoul",null,"01099777777",100000,"card",null);
+	void contextloads() {
+		CustVO obj = new CustVO("id04", "pwd04", "choi", "ddd@naver.com","01010001001",null,"11000","Seoul",null,3000);
 		try {
 			biz.modify(obj);
 			System.out.println("complete ...");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

@@ -1,21 +1,21 @@
-package com.multi.buy;
+package com.multi.product;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.BuyBiz;
-import com.multi.vo.BuyVO;
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
 
 @SpringBootTest
-class BuySelectTest {
+class ProductSelectTest {
 
 	@Autowired
-	BuyBiz biz;
+	ProductBiz biz;
 	
 	@Test
 	void contextLoads() {
-		BuyVO obj = null;
+		ProductVO obj = null;
 		try {
 			obj = biz.get(1);
 			System.out.println(obj);

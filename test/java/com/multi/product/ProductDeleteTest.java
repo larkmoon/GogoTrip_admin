@@ -1,28 +1,25 @@
-package com.multi.buy;
+package com.multi.product;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.BuyBiz;
-import com.multi.vo.BuyVO;
+import com.multi.biz.ProductBiz;
 
 @SpringBootTest
-class BuySelectTest {
+class ProductDeleteTest {
 
 	@Autowired
-	BuyBiz biz;
+	ProductBiz biz;
 	
 	@Test
 	void contextLoads() {
-		BuyVO obj = null;
 		try {
-			obj = biz.get(1);
-			System.out.println(obj);
+			biz.remove(6);
+			System.out.println("complete ...");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 
 	}
 
