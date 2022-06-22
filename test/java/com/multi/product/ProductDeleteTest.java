@@ -20,7 +20,5 @@ class ProductDeleteTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

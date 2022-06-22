@@ -42,4 +42,8 @@ public class CateBiz implements Biz<Integer, CateVO> {
 		return dao.selectall();
 	}
 	
+	public List<CateVO> getmain() throws Exception {
+		return dao.selectmain();
+	}
+	
 }

@@ -36,4 +36,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		DELETE FROM cate WHERE ID=#{id}
 	</delete>
 	
+	<select id="selectmain" resultType="cateVO">
+		SELECT * FROM cate
+		WHERE upid is null
+	</select>
+	
 </mapper>

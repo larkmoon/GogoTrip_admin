@@ -22,8 +22,6 @@ class ProductSelectTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-
 	}
 
 }
