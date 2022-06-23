@@ -9,7 +9,7 @@ import com.multi.frame.Biz;
 import com.multi.mapper.MarkerMapper;
 import com.multi.vo.MarkerVO;
 
-@Service("markerbiz")
+@Service
 public class MarkerBiz implements Biz<Integer, MarkerVO> {
 
 	@Autowired

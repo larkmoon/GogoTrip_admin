@@ -9,7 +9,7 @@ import com.multi.frame.Biz;
 import com.multi.mapper.CommuMapper;
 import com.multi.vo.CommuVO;
 
-@Service("commubiz")
+@Service
 public class CommuBiz implements Biz<Integer, CommuVO>{
 	
 	@Autowired

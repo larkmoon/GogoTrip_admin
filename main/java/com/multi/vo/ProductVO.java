@@ -17,16 +17,16 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ProductVO {
-	public int id;
-	public String name;
-	public int price;
-	public int cid;
-	public Date regdate;
-	public int stock;
-	public String imgname;
-	public String description;
+	private int id;
+	private String name;
+	private int price;
+	private int cid;
+	private Date regdate;
+	private int stock;
+	private String imgname;
+	private String description;
 	
-	public String catename;
+	private String catename;
 	private MultipartFile mf;
 
 	public ProductVO(int id, String name, int price, int cid, Date regdate, int stock, String imgname,

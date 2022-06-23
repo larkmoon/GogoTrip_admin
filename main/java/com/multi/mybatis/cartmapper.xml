@@ -5,11 +5,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CartMapper">
 	
 	<select id="select" parameterType="int" resultType="cartVO">
-		SELECT * FROM cart
-		WHERE id=#{id}
+		SELECT ct.id, ct.uid, ct.pid, ct.regdate, ct.cnt, p.name AS pname, p.price AS pprice ,ca.name AS catename FROM cart ct
+		INNER JOIN cust cu ON ct.uid=cu.id
+		INNER JOIN product p ON ct.pid=p.id
+		INNER JOIN cate ca ON p.cid=ca.id
+		WHERE ct.id=#{id}
 	</select>
 	<select id="selectall" resultType="cartVO">
-		SELECT * FROM cart
+		SELECT ct.id, ct.uid, ct.pid, ct.regdate, ct.cnt, p.name AS pname, p.price AS pprice ,ca.name AS catename FROM cart ct
+		INNER JOIN product p ON ct.pid=p.id
+		INNER JOIN cate ca ON p.cid=ca.id
 	</select>
 	<insert id="insert" parameterType="cartVO">
 		INSERT INTO cart VALUES (null,#{uid},#{pid},#{cnt},SYSDATE())

@@ -18,12 +18,12 @@
                 </thead>
                 <tbody>
                     <tr th:each="product:${productlist}">
-                        <th th:text="${product.id}"></th>
-                        <th th:text="${product.name}">name</th>
-                        <th th:text="${product.price}">price</th>
-                        <th th:text="${product.catename}">catename</th>
-                        <th th:text="${product.stock}">stock</th>
-                        <th th:text="${#dates.format(product.regdate, 'yyyy/MM/dd')}">regdate</th>
+                        <td th:text="${product.id}"></td>
+                        <td th:text="${product.name}">name</td>
+                        <td th:text="${product.price}">price</td>
+                        <td th:text="${product.catename}">catename</td>
+                        <td th:text="${product.stock}">stock</td>
+                        <td th:text="${#dates.format(product.regdate, 'yyyy/MM/dd')}">regdate</td>
                         <td ><a th:href="@{productdetail(id=${product.id})}">⚙</a>️</td>
                     </tr>
 

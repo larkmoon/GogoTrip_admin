@@ -1,0 +1,32 @@
+<meta charset="utf-8">
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Responsive Table</h6>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">product name</th>
+                        <th scope="col">price</th>
+                        <th scope="col">quantity</th>
+                        <th scope="col">delivery</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="d:${buydetaillist}">
+                        <td th:text="${d.id}">id</td>
+                        <td th:text="${d.pname}">product name</td>
+                        <td th:text="${d.pprice}">price</td>
+                        <td th:text="${d.cnt}">quantity</td>
+                        <td th:text="${d.delivery}">delivery</td>
+                        
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

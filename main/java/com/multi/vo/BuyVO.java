@@ -15,16 +15,16 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class BuyVO {
-	public int id;
-	public String uid;
-	public String name;
-	public int zip;
-	public String addrf;
-	public String addrs;
-	public String phone;
-	public int totalprice;
-	public String payment;
-	public Date regdate;
+	private int id;
+	private String uid;
+	private String name;
+	private int zip;
+	private String addrf;
+	private String addrs;
+	private String phone;
+	private int totalprice;
+	private String payment;
+	private Date regdate;
 
 	// for insert
 	public BuyVO(String uid, String name, int zip, String addrf, String addrs, String phone, int totalprice,

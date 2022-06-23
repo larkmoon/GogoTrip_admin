@@ -42,4 +42,7 @@ public class BuydetailBiz implements Biz<Integer, BuydetailVO> {
 		return dao.selectall();
 	}
 	
+	public List<BuydetailVO> getoid(int oid) throws Exception {
+		return dao.selectoid(oid);
+	}
 }

@@ -9,7 +9,7 @@ import com.multi.frame.Biz;
 import com.multi.mapper.AdminMapper;
 import com.multi.vo.AdminVO;
 
-@Service("adminbiz")
+@Service
 public class AdminBiz implements Biz<String, AdminVO> {
 	
 	@Autowired

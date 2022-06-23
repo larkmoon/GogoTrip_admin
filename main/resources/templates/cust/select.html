@@ -18,13 +18,13 @@
                                     </thead>
                                     <tbody>
                                         <tr th:each="cust:${custlist}">
-                                            <th th:text="${cust.id}">id</th>
-                                            <th th:text="${cust.pwd}">password</th>
-                                            <th th:text="${cust.name}">name</th>
-                                            <th th:text="${cust.email}">email</th>
-                                            <th th:text="'['+${cust.zip}+'] '+${cust.addrf}+' / '+${cust.addrs}">address</th>
-                                            <th th:text="${cust.point}">point</th>
-                                            <th scope="col"><a th:href="@{delete(id=${cust.id})}">❎</a></th>
+                                            <td th:text="${cust.id}">id</td>
+                                            <td th:text="${cust.pwd}">password</td>
+                                            <td th:text="${cust.name}">name</td>
+                                            <td th:text="${cust.email}">email</td>
+                                            <td th:text="'['+${cust.zip}+'] '+${cust.addrf}+' / '+${cust.addrs}">address</td>
+                                            <td th:text="${cust.point}">point</td>
+                                            <td scope="col"><a th:href="@{delete(id=${cust.id})}">❎</a></td>
                                             
                                         </tr>
                                 </table>
