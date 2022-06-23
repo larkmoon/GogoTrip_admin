@@ -1,0 +1,101 @@
+<meta charset="utf-8">
+
+
+ <script>
+
+ function checkid(id){
+ 	$.ajax({
+ 		url:'checkid',
+ 		data:{'id':id},
+ 		success:function(data){
+ 			if(data == "0"){
+ 				if(id == ""){
+ 					data = "1"
+ 				}
+ 				$('#ispan').text('');
+ 			}else if(data == "1"){
+ 				$('#ispan').text('This ID is already exist');
+ 			}
+ 			errorid = data;
+ 			console.log(errorid);
+ 		}
+ 	});
+ }
+ 
+ 
+ $(document).ready(function(){
+	$('#update_btn').click(function(){
+		var name = $('input[id="name"]').val();
+		if(name == ""){
+			alert("Input name");
+			$('#name').focus();
+		}else{
+			$('#catedetail_form').attr({
+				'method':'post',
+				'action':'cateupdate'
+			})
+			$('#catedetail_form').submit();
+		}
+	});
+	 
+	$('#delete_btn').click(function(){
+		var id = $('input[name="checkid"]').val();
+		var c = confirm('Are you sure you want to delete it?');
+		if(c == true){
+			location.href='catedelete?id='+id;
+		}
+	});
+	
+	$('#id').blur(function(){
+		var id = $(this).val();
+		var ckid = $('#checkid').val();
+		
+		
+	});
+	
+ });
+ 
+
+
+
+
+
+
+ </script>
+
+
+<div class="col-sm-12 col-xl-5">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Add new category</h6>
+        <form id="catedetail_form">
+        	<div class="mb-3">
+                <input type="hidden" class="form-control" id="checkid" name="checkid" th:value="${catevalue.id}" >
+            </div>
+        
+        
+            <div class="mb-3" >
+                <label for="id" class="form-label">ID</label>
+                <input type="number" class="form-control" id="id" name="id" th:value="${catevalue.id}" readonly="readonly">
+                <span id="ispan"></span> 
+            </div>
+            <div class="mb-3">
+                <label for="upid" class="form-label">NAME</label>
+                <input type="text" class="form-control" id="name" name="name" th:value="${catevalue.name}">
+            </div>
+            <label for="cid" class="form-label">UPID</label>
+			<select class="form-select mb-3" id="upid" name="upid">
+				<option value="0">Top</option>
+                <option th:each="cm:${catemainlist}" th:value="${cm.id}" th:text="${cm.id}+' : '+${cm.name}"
+                th:selected="${cm.id} == ${catevalue.upid}"></option>
+            </select>
+            <a href="#" id="update_btn" class="btn btn-primary btn-user btn-block">
+                 UPDATE
+             </a>
+             <a href="#" id="delete_btn" class="btn btn-primary btn-user btn-block">
+             <!-- th:href="@{delete(id=${catevalue.id})}" -->
+                 DELETE
+             </a>
+        </form>
+        	
+    </div>
+</div>

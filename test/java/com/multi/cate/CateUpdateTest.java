@@ -15,7 +15,7 @@ class CateUpdateTest {
 	
 	@Test
 	void contextLoads() {
-		CateVO obj = new CateVO(31,"cc1",30);
+		CateVO obj = new CateVO(40,"dd",0);
 		try {
 			biz.modify(obj);
 			System.out.println("complete ...");

@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<update id="update" parameterType="cateVO">
 		<if test="upid == 0">
-			UPDATE cate SET name=#{name} upid=null WHERE ID=#{id}
+			UPDATE cate SET name=#{name} WHERE ID=#{id}
 		</if>
 		<if test="upid != 0">
 			UPDATE cate SET name=#{name}, upid=#{upid} WHERE ID=#{id}

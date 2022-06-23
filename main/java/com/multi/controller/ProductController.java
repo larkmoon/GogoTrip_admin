@@ -45,10 +45,13 @@ public class ProductController {
 	
 	@RequestMapping("catemain")
 	public String catemain(Model m) {
+		List<CateVO> mainlist = null;
 		List<CateVO> list = null;
 		try {
-			list = cbiz.getmain();
-			m.addAttribute("catemainlist",list);
+			mainlist = cbiz.getmain();
+			list = cbiz.get();
+			m.addAttribute("catemainlist",mainlist);
+			m.addAttribute("catelist",list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -67,6 +70,40 @@ public class ProductController {
 		return "redirect:catemain";
 	}
 	
+	@RequestMapping("catedetail")
+	public String catedetail(Model m, int id) {
+		CateVO obj = null;
+		List<CateVO> mainlist = null;
+		try {
+			obj = cbiz.get(id);
+			mainlist = cbiz.getmain();
+			m.addAttribute("catevalue",obj);
+			m.addAttribute("catemainlist",mainlist);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center","product/catedetail");
+		return "index";
+	}
+	@RequestMapping("catedelete")
+	public String catedelete(int id) {
+		try {
+			cbiz.remove(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:catemain";
+	}
+	
+	@RequestMapping("cateupdate")
+	public String cateupdate(Model m, CateVO obj) {
+		try {
+			cbiz.modify(obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:catemain";
+	}
 	
 	
 }
