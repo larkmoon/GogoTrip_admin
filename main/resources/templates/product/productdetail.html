@@ -1,0 +1,105 @@
+<meta charset="utf-8">
+<style>
+#btn{
+	margin-top:30px;
+}
+</style>
+
+<script>
+
+function update(name,price){
+	if(name == ""){
+		alert("Input name");
+		$('#name').focus();	
+	}else if(price == ""){
+		alert("Input price");
+		$('#price').focus();
+	}else{
+		$('#update_form').attr({
+			'enctype':'multipart/form-data',
+			'method':'post',
+			'action':'productupdate'
+		})
+		$('#update_form').submit();
+	}
+}
+
+
+$(document).ready(function(){
+	$('#update_btn').click(function(){
+		var name = $('#name').val();
+		var price = $('#price').val();
+		update(name,price);
+		
+		
+	});
+	$('#delete_btn').click(function(){
+		var id = $('input[name="id"]').val();
+		var c = confirm('Are you sure you want to delete it?');
+		if (c == true){
+			location.href='productdelete?id='+id;
+		}
+	});
+});
+</script>
+ 
+<div class="container-fluid pt-4 px-4" id="register_div">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-8">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add new Product</h6>
+                <form id="update_form">
+                	<div class="mb-3">
+                        <img th:if="${productvalue.imgname != null}" th:src="@{'/img/'+${productvalue.imgname}}" id="detail_img" >
+                 		<input type="hidden" name="imgname" th:value="${productvalue.imgname}">
+                    </div>
+                	<div class="mb-3">
+                        <label for="mf" class="form-label">IMAGE</label>
+                        <input class="form-control" type="file" id="mf" name="mf" >
+                    </div>
+                
+                	<div class="mb-3">
+                        <label for="id" class="form-label">NAME</label>
+                        <input type="text" class="form-control form-control-user" name="id" value="" th:value="${productvalue.id}" readonly="readonly">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">NAME</label>
+                        <input type="text" class="form-control" id="name" name="name" th:value="${productvalue.name}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">PRICE</label>
+                        <input type="number" class="form-control" id="price" name="price" th:value="${productvalue.price}">
+                    </div>
+                    <label for="cid" class="form-label">CATEGORY</label>
+                    <select class="form-select mb-3" id="cid" name="cid">
+                        <option th:each="cate:${catelist}" th:value="${cate.id}" th:text="${cate.id}+' : '+${cate.name}"
+                        th:selected="${cate.id} == ${productvalue.cid}"></option>
+                    </select>
+                    <div class="mb-3">
+                        <label for="stock" class="form-label">STOCK</label>
+                        <input type="number" class="form-control" id="stock" name="stock" th:value="${productvalue.stock}">
+                    </div>
+                 
+                    <label class="form-label">DESCRIPTION</label>
+                    <div class="form-floating"> 
+                    	
+                        <textarea class="form-control" placeholder="Leave a comment here"
+                            id="description" name="description" style="height: 150px;" th:text="${productvalue.description}"></textarea>
+                        <label for="description">Product Details</label>
+                    </div>
+                    <div id="btn">
+						 <a href="#" id="update_btn" class="btn btn-primary btn-user btn-block">
+			                 UPDATE
+			             </a>
+			             <a href="#" id="delete_btn" class="btn btn-primary btn-user btn-block">
+			                 DELETE
+			             </a>
+		            </div>
+                </form>
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+    <!-- Form End -->

@@ -1,27 +1,32 @@
-package com.multi.product;
+package com.multi.cate;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.ProductBiz;
-import com.multi.vo.ProductVO;
+import com.multi.biz.CateBiz;
+import com.multi.vo.CateVO;
 
 @SpringBootTest
-class ProductSelectTest {
+class CateSelectSubTest {
 
 	@Autowired
-	ProductBiz biz;
+	CateBiz biz;
 	
 	@Test
 	void contextLoads() {
-		ProductVO obj = null;
+		List<CateVO> list = null;
 		try {
-			obj = biz.get(2);
-			System.out.println(obj);
+			list = biz.getsub();
+			for (CateVO obj : list) {
+				System.out.println(obj);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 }

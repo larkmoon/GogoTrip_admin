@@ -5,18 +5,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.ProductMapper">
 	
 	<select id="select" parameterType="int" resultType="productVO">
-		SELECT * FROM product
-		WHERE id=#{id}
+		SELECT p.id, p.name, p.price, p.cid, c.name AS catename, p.regdate, p.stock, p.imgname, p.description FROM product p
+		INNER JOIN cate c ON p.cid= c.id
+		WHERE p.id=#{id}
 	</select>
 	<select id="selectall" resultType="productVO">
-		SELECT * FROM product
+		SELECT p.id, p.name, p.price, p.cid, c.name AS catename, p.regdate, p.stock, p.imgname, p.description FROM product p
+		INNER JOIN cate c ON p.cid= c.id
 	</select>
 	<insert id="insert" parameterType="productVO">
 		<if test="stock != 0">
-			INSERT INTO product VALUES (null, #{name}, #{price}, #{cid}, SYSDATE(), #{stock}, #{imgname}, #{description})
+			INSERT INTO product VALUES (null, #{name}, #{price}, #{cid}, CURDATE(), #{stock}, #{imgname}, #{description})
 		</if>
 		<if test="stock == 0">
-			INSERT INTO product VALUES (null, #{name}, #{price}, #{cid}, SYSDATE(), null, #{imgname}, #{description})
+			INSERT INTO product VALUES (null, #{name}, #{price}, #{cid}, CURDATE(), null, #{imgname}, #{description})
 		</if>
 	</insert>
 	<update id="update" parameterType="productVO">

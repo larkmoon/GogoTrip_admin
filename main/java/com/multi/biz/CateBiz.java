@@ -46,4 +46,8 @@ public class CateBiz implements Biz<Integer, CateVO> {
 		return dao.selectmain();
 	}
 	
+	public List<CateVO> getsub() throws Exception {
+		return dao.selectsub();
+	}
+	
 }

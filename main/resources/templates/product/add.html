@@ -4,7 +4,19 @@
 	margin-top:30px;
 }
 </style>
-
+<script>
+$(document).ready(function(){
+	
+	$('#register_btn').click(function(){
+		$('#register_form').attr({
+			'enctype':'multipart/form-data',
+			'method':'post',
+			'action':'product_registimpl'
+		})
+		$('#register_form').submit();
+	});
+});
+</script>
 <div class="container-fluid pt-4 px-4" id="register_div">
     <div class="row g-4">
         <div class="col-sm-12 col-xl-8">
@@ -20,11 +32,8 @@
                         <input type="number" class="form-control" id="price" name="price">
                     </div>
                     <label for="cid" class="form-label">CATEGORY</label>
-                    <select class="form-select mb-3" id="cate" name="cate">
-                        <option selected>select category</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select mb-3" id="cid" name="cid">
+                        <option th:each="cate:${catelist}" th:value="${cate.id}" th:text="${cate.id}+' : '+${cate.name}"></option>
                     </select>
                     <div class="mb-3">
                         <label for="stock" class="form-label">STOCK</label>
@@ -37,7 +46,7 @@
                     </div>
                     
                     <label class="form-label">DESCRIPTION</label>
-                    <div class="form-floating"> 
+                    <div class="form-floating">
                     	
                         <textarea class="form-control" placeholder="Leave a comment here"
                             id="description" name="description" style="height: 150px;"></textarea>
