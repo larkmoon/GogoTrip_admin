@@ -5,8 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CustMapper">
 
 	<select id="select" parameterType="String" resultType="custVO">
-		SELECT * FROM
-		cust WHERE id=#{id}
+		SELECT * FROM cust WHERE id=#{id}
 	</select>
 	<select id="selectall" resultType="custVO">
 		SELECT * FROM cust
@@ -26,7 +25,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		UPDATE cust SET point=#{point}
 		WHERE id=#{id}
 	</update>
-
+	
+	<select id="selectemail" parameterType="String" resultType="custVO">
+		SELECT * FROM cust WHERE email=#{email}
+	</select>
+	
+	<select id="selectphone" parameterType="String" resultType="custVO">
+		SELECT * FROM cust WHERE phone=#{phone}
+	</select>
 </mapper>
 
 

@@ -22,7 +22,7 @@
                                             <th th:text="${cust.pwd}">password</th>
                                             <th th:text="${cust.name}">name</th>
                                             <th th:text="${cust.email}">email</th>
-                                            <th th:text="'['+${cust.zip}+']'+${cust.addrf}+' '+${cust.addrs}">address</th>
+                                            <th th:text="'['+${cust.zip}+'] '+${cust.addrf}+' / '+${cust.addrs}">address</th>
                                             <th th:text="${cust.point}">point</th>
                                             <th scope="col"><a th:href="@{delete(id=${cust.id})}">❎</a></th>
                                             

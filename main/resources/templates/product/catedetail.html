@@ -2,25 +2,6 @@
 
 
  <script>
-
- function checkid(id){
- 	$.ajax({
- 		url:'checkid',
- 		data:{'id':id},
- 		success:function(data){
- 			if(data == "0"){
- 				if(id == ""){
- 					data = "1"
- 				}
- 				$('#ispan').text('');
- 			}else if(data == "1"){
- 				$('#ispan').text('This ID is already exist');
- 			}
- 			errorid = data;
- 			console.log(errorid);
- 		}
- 	});
- }
  
  
  $(document).ready(function(){
@@ -44,13 +25,6 @@
 		if(c == true){
 			location.href='catedelete?id='+id;
 		}
-	});
-	
-	$('#id').blur(function(){
-		var id = $(this).val();
-		var ckid = $('#checkid').val();
-		
-		
 	});
 	
  });

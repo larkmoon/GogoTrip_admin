@@ -17,4 +17,7 @@ public interface CustMapper {
 	public List<CustVO> selectall() throws Exception;
 	
 	public void updatepoint(CustVO obj) throws Exception;
+	
+	public CustVO selectemail(String email) throws Exception;
+	public CustVO selectphone(String phone) throws Exception;
 }

@@ -5,6 +5,136 @@
 };
 
 </style>
+<script>
+var errorid = 1;
+var erroremail = 1;
+var errorphone = 1;
+
+
+function checkid(id){
+	$.ajax({
+		url:'checkid',
+		data:{'id':id},
+		success:function(data){
+			if(data == "0"){
+				if(id == ""){
+					data = "1"
+				}
+				$('#ispan').text('');
+			}else if(data == "1"){
+				$('#ispan').text('This ID is already exist');
+			}
+			errorid = data;
+		}
+	});
+}
+function checkemail(email){
+	$.ajax({
+		url:'checkemail',
+		data:{'email': email},
+		success:function(data){
+			if(data == "0"){
+				if(email == ""){
+					data = "1"
+				}
+				$('#espan').text('');
+			}else if(data == "1"){
+				$('#espan').text('This e-mail is already exist');
+			}
+			erroremail = data;
+		}
+	});
+}
+function checkphone(phone){
+	if(phone.length != 11){
+		$('#pspan').text('Length must be 11');
+		errorphone = 1
+	}else{
+		$.ajax({
+			url:'checkphone',
+			data:{'phone':phone},
+			success:function(data){
+				if(data == "0"){
+					if(phone == ""){
+						data = "1"
+					}
+					$('#pspan').text('');
+				}else if(data == "1"){
+					$('#pspan').text('This number is already exist');
+				}else{
+					$('#pspan').text('Input Number type');
+				}
+				errorphone = data;
+			}
+		});
+	}
+}
+
+
+function register(pwd,name,zip,addrf){
+	console.log("id: "+errorid);
+	console.log("email: "+erroremail);
+	console.log("phone: "+errorphone);
+	if(errorid != 0){
+		alert("ID Error");
+		$('#id').focus();
+	}else if(pwd == ""){
+		alert("Input Password");
+		$('#pwd').focus();
+		
+	}else if(name == ""){
+		alert("Input name");
+		$('#name').focus();
+	}else if(erroremail != 0){
+		alert("e-mail Error");
+		$('#email').focus();
+	}else if(errorphone != 0){
+		alert("Phone number Error");
+		$('#id').focus();
+	}else if(zip == ""){
+		alert("Input ZIP");
+		$('#zip').focus();
+	}else if(addrf == ""){
+		alert("Input address");
+		$('#addrf').focus();
+	}
+	else{
+		$('#register_form').attr({
+			'method':'post',
+			'action':'registerimpl'
+		});
+		$('#register_form').submit();
+	}
+}
+
+
+
+$(document).ready(function(){
+	$('#register_btn').click(function(){
+		var pwd = $('#pwd').val();
+		var name = $('#name').val();
+		var zip = $('#zip').val();
+		var addrf = $('#addrf').val();
+		register(pwd,name,zip,addrf);
+		
+	});
+	
+	$('#id').blur(function(){
+		var id = $(this).val();
+		checkid(id);
+	});
+	$('#email').blur(function(){
+		var email = $(this).val();
+		checkemail(email);
+	});
+	$('#phone').blur(function(){
+		var phone = $(this).val();
+		checkphone(phone);
+	});
+	
+});
+
+</script>
 <div class="container-fluid pt-4 px-4" id="register_div">
     <div class="row g-4">
         <div class="col-sm-12 col-xl-8">
@@ -14,6 +144,7 @@
                     <div class="mb-3">
                         <label for="id" class="form-label">ID</label>
                         <input type="text" class="form-control" id="id" name="id">
+                        <span id="ispan"></span>
                     </div>
                     <div class="mb-3">
                         <label for="pwd" class="form-label">PASSWORD</label>
@@ -26,15 +157,17 @@
                     <div class="mb-3">
                         <label for="email" class="form-label">e-mail</label>
                         <input type="email" class="form-control" id="email" name="email">
+                        <span id="espan"></span>
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">Tel.</label>
                         <input type="text" class="form-control" id="phone" name="phone">
+                        <span id="pspan"></span>
                     </div>
                  
                     <div class="inln col-xl-4">
                         <label for="zip" class="form-label">ZIP</label>
-                        <input type="text" class="form-control" id="zip" name="zip">
+                        <input type="number" class="form-control" id="zip" name="zip">
                     </div>
                     <div class="inln col-xl-7">
                         <label for="addrf" class="form-label">ADDRESS</label>

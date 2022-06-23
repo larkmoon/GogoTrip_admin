@@ -47,5 +47,14 @@ public class CustController {
 		return "redirect:select";
 	}
 	
+	@RequestMapping("registerimpl")
+	public String register(Model m, CustVO obj) {
+		try {
+			cubiz.register(obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:select";
+	}
 
 }
