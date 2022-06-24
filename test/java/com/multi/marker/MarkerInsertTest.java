@@ -15,7 +15,7 @@ class MarkerInsertTest {
 	
 	@Test
 	void contextloads() {
-		MarkerVO obj = new MarkerVO(8, "일민미술관", 37.569784, 126.977664);
+		MarkerVO obj = new MarkerVO(0, 2,"일민미술관", 37.569784, 126.977664);
 		try {
 			biz.register(obj);
 			System.out.println(obj + "Inserted");

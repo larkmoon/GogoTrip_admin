@@ -38,7 +38,12 @@ public class CustController {
 	
 	@RequestMapping("delete")
 	public String delete(Model m, String id) {
+		List<Integer> list = null;
 		try {
+			list = cubiz.getUpdlist(id);
+			for (Integer b : list) {
+				cubiz.nullBeforeDelete(b);
+			}
 			cubiz.remove(id);
 		} catch (Exception e) {
 			e.printStackTrace();

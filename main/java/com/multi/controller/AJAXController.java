@@ -63,10 +63,9 @@ public class AJAXController {
 	public String custcheckphone(String phone) {
 		CustVO obj = null;
 		String result = "";
-		Double dnum= 0.0;
+
 		
 		try {
-			dnum = Double.parseDouble(phone);
 			obj = cubiz.getphone(phone);
 			if(obj == null) {
 				result = "0";

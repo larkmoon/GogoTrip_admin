@@ -52,4 +52,14 @@ public class CustBiz implements Biz<String, CustVO> {
 		return dao.selectphone(phone);
 	}
 	
+	
+	// for delete: buy.uid -> null
+	public List<Integer> getUpdlist(String id) throws Exception{
+		return dao.selectUpdlist(id);
+	}
+	
+	public void nullBeforeDelete(int id) throws Exception{
+		dao.nullBD(id);
+	}
+	
 }

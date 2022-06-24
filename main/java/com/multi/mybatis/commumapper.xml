@@ -5,11 +5,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CommuMapper">
 
 	<select id="select" parameterType="int" resultType="commuVO">
-		SELECT * FROM
-		commu WHERE id=#{id}
+		SELECT cm.id, cm.uid, cu.name AS uname , cm.type, cm.title, cm.content, cm.regdate, cm.location, cm.imgname, cm.views FROM commu cm
+		INNER JOIN cust cu ON cm.uid=cu.id
+		WHERE id=#{id}
 	</select>
 	<select id="selectall" resultType="commuVO">
-		SELECT * FROM commu
+		SELECT cm.id, cm.uid, cu.name AS uname , cm.type, cm.title, cm.content, cm.regdate, cm.location, cm.imgname, cm.views FROM commu cm
+		INNER JOIN cust cu ON cm.uid=cu.id
 	</select>
 	<insert id="insert" parameterType="commuVO">
 		INSERT INTO commu VALUES(NULL, #{uid}, #{type}, #{title}, #{content}, CURDATE(), #{location}, #{imgname}, DEFAULT)
