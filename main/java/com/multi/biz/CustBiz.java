@@ -62,4 +62,13 @@ public class CustBiz implements Biz<String, CustVO> {
 		dao.nullBD(id);
 	}
 	
+	// for delete: commu.uid -> null
+	public List<Integer> getUpdlist_c(String id) throws Exception{
+		return dao.selectUpdlist_c(id);
+	}
+	
+	public void nullBeforeDelete_c(int id) throws Exception{
+		dao.nullBD_c(id);
+	}
+	
 }

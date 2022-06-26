@@ -17,5 +17,8 @@ public interface ProductMapper {
 	public ProductVO select(int id) throws Exception;
 	public List<ProductVO> selectall() throws Exception;
 	
+	// for delete: buydetail.pid -> null
+	public List<Integer> selectUpdlist(int id) throws Exception;
+	public void nullBD(int id) throws Exception;
 	
 }

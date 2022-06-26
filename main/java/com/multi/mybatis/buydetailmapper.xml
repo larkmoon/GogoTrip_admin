@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT d.id, b.uid AS uid, b.name as uname, p.name AS pname, p.price AS pprice, d.cnt, d.delivery, b.totalprice AS totalprice 
 		FROM buydetail d
 		INNER JOIN buy b ON d.oid = b.id
-		INNER JOIN product p ON d.pid = p.id
+		LEFT OUTER JOIN product p ON d.pid = p.id
 		WHERE oid=#{oid}
 	</select>
 </mapper>

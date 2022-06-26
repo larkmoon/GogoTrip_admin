@@ -112,9 +112,18 @@ public class ProductController {
 		return "redirect:select";
 	}
 	@RequestMapping("/productdelete")
-	public String pdelete(int id) {
+	public String pdelete(Model m, int id) {
+		List<Integer> list = null;
+		
 		try {
+			
+			list = pbiz.getUpdlist(id);
+			for (Integer b : list) {
+				pbiz.nullBeforeDelete(b);
+			}
 			pbiz.remove(id);
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "redirect:detail?id="+id;

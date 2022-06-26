@@ -33,4 +33,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		DELETE FROM product WHERE ID=#{id}
 	</delete>
 	
+		<!-- for delete: buydetail.pid -> null -->
+	<select id="selectUpdlist" parameterType="int" resultType="int">
+		SELECT id FROM buydetail WHERE pid = #{id}
+	</select>
+	<select id="nullBD" parameterType="int">
+		UPDATE buydetail SET pid=null WHERE id=#{id} 
+	</select>
+
+	
 </mapper>

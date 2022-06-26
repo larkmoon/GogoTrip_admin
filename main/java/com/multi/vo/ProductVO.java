@@ -40,6 +40,11 @@ public class ProductVO {
 		this.imgname = imgname;
 		this.description = description;
 	}
+
+	public ProductVO(int id, int price) {
+		this.id = id;
+		this.price = price;
+	}
 	
 	
 

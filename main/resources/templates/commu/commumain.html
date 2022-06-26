@@ -19,7 +19,7 @@
                 <tbody>
                     <tr th:each="com:${commulist}">
                         <td th:text="${com.id}"></td>
-                        <td th:text="${com.uname}"></td>
+                        <td th:text="${com.uid}"></td>
                         <td th:text="${com.type}+' / '+${com.location}+' '"></td>
                         <td th:text="${com.title}"></td>
                         <td th:text="${#dates.format(com.regdate,'yyyy/MM/dd')}"></td>

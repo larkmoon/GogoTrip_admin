@@ -42,4 +42,15 @@ public class ProductBiz implements Biz<Integer, ProductVO> {
 		return dao.selectall();
 	}
 	
+	// for delete: buy.uid -> null
+	public List<Integer> getUpdlist(int id) throws Exception{
+		return dao.selectUpdlist(id);
+	}
+	
+	public void nullBeforeDelete(int id) throws Exception{
+		dao.nullBD(id);
+	}
+	
+
+	
 }
