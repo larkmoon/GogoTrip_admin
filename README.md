@@ -27,7 +27,7 @@ Ecommerce website with community service for <b>travelers</b>
 
 ### Features
 
-For detailed UI & functionalities: [Click(Portfolio)](https://github.com/larkmoon/GogoTrip_shop/blob/master/gogotrip_portfolio.pdf)
+For detailed UI & functionalities: [Click(Portfolio)](https://github.com/yunchanbin/GogoTrip_admin/blob/master/gogotrip_portfolio.pdf)
 
 - User(https://github.com/larkmoon/GogoTrip_shop)
 
